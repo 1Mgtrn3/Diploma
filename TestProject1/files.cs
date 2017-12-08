@@ -59,7 +59,7 @@ namespace TestProject1
             File.Delete(filex); //замена реального файла набуфер
             File.Move(text.pathv + "tempdup.txt", filex);
         }
-        public static int diccount() //класс: работа с файлами
+        public static int diccount() 
         {
 
             return File.ReadLines(text.pathv + text.otf).Count();
@@ -88,7 +88,7 @@ namespace TestProject1
             
         }
 
-        public static int mutcount() //класс: работа с файлами
+        public static int mutcount() 
         {
             return File.ReadLines(text.pathv + text.rate).Count();
         }

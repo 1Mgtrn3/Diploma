@@ -47,7 +47,7 @@ namespace TestProject1
             mutfile.Close();
 
         }
-        public static void checkmut(string filex) //класс: рейтинг мутаций
+        public static void checkmut(string filex)
         {
             var sr2 = new StreamReader(File.OpenRead(@filex));
             while (!sr2.EndOfStream)
@@ -141,7 +141,7 @@ namespace TestProject1
 
             var ratefw = new StreamWriter(ratef); //открываем поток записи в файл рейтинга
             var lines = File.ReadAllLines(text.pathv + "tempo"); //считываем в массив все что хотели из временног файла
-            List<string> linesList = new List<string>(lines); //создаем список на основе массива (могли блядь тупо со списком все время работать)
+            List<string> linesList = new List<string>(lines); //создаем список на основе массива (могли со списком все время работать)
             var lineCountDict = linesList.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()); // делаем словарь
             var sortedDict = from entry in lineCountDict orderby entry.Value descending select entry; //сортируем словарь
             //var ss = File.Create(sfile); //заного создаем файл начальных мутаций
@@ -155,8 +155,8 @@ namespace TestProject1
                 {
                     ratefw.WriteLine(val.Key + " " + val.Value);
                 }
-                // в файл рейтинга фигачим собственно мутации в рейтинге
-                //       string[] pair = val.Key.Split(new string[] { " " }, StringSplitOptions.None); //создаем массив - табличку куда фигачим наши мутации (уже без дубликатов)
+                // в файл рейтинга отправляем собственно мутации в рейтинге
+                //       string[] pair = val.Key.Split(new string[] { " " }, StringSplitOptions.None); //создаем массив - табличку куда отправляем наши мутации (уже без дубликатов)
                 //sw3.WriteLine(pair[0]); //записываем в файл начала и конца мутации уже без дубликатов
                 //sw4.WriteLine(pair[1]);
                 i++;

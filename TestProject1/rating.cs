@@ -29,7 +29,7 @@ namespace TestProject1
                         while (m != 0)
                         {
                             i++;
-                            string[] muts = mut.ReadLine().Split(new string[] { " " }, StringSplitOptions.None); //тут мы получили массив строк из той штуки. щас надо просто сделать конкатинацию и все
+                            string[] muts = mut.ReadLine().Split(new string[] { " " }, StringSplitOptions.None); //тут мы получили массив строк. сейчас надо просто сделать конкатинацию и все
                             mutfile.WriteLine(muts[0] + line + muts[1]);
                            // Debug.WriteLine(i);
                             int perc = Convert.ToInt32(((float)(i) / final) * 100);
@@ -60,8 +60,7 @@ namespace TestProject1
                     if ((line2 != line) && (line2.Contains(line)))
                     {
                         string[] pair = line2.Split(new string[] { line }, StringSplitOptions.None);
-                        //    foreach(string segment in pair){
-                        //     MessageBox.Show(pair[0]);
+                       
                         using (StreamWriter start = File.AppendText(text.pathv + text.startf))
                         {
 
@@ -120,8 +119,8 @@ namespace TestProject1
             }
 
 
-            var tempo = File.Create(text.pathv + "tempo"); // создали зачем-то временный файл файл
-            var ratef = File.Create(text.pathv + text.rate); //создали рейтинговый файл (возможно зря, но к этому вернемся)
+            var tempo = File.Create(text.pathv + "tempo"); 
+            var ratef = File.Create(text.pathv + text.rate); //создали рейтинговый файл
             var sr1 = new StreamReader(File.OpenRead(sfile)); //открыли файл начальных мутаций
             var sr2 = new StreamReader(File.OpenRead(efile)); // открыли файл конечных мутаций
             var sw1 = new StreamWriter(tempo); //открыли временный файл для записи
@@ -130,13 +129,13 @@ namespace TestProject1
                 string s = sr1.ReadLine(); //в переменные записываем начальную и конечную мутацию
                 string e = sr2.ReadLine();
 
-                sw1.WriteLine(s + " " + e); // в буферный файл фигачим их соединение
+                sw1.WriteLine(s + " " + e); // в буферный файл записываем их соединение
 
             }
 
             sw1.Close(); //закрываем поток записи в буферный файл
             tempo.Close(); //закрываем поток который создавал буферный файл 
-            sr1.Close(); //все понятно
+            sr1.Close(); 
             sr2.Close();
 
             var ratefw = new StreamWriter(ratef); //открываем поток записи в файл рейтинга
@@ -144,10 +143,7 @@ namespace TestProject1
             List<string> linesList = new List<string>(lines); //создаем список на основе массива (могли со списком все время работать)
             var lineCountDict = linesList.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()); // делаем словарь
             var sortedDict = from entry in lineCountDict orderby entry.Value descending select entry; //сортируем словарь
-            //var ss = File.Create(sfile); //заного создаем файл начальных мутаций
-            //var se = File.Create(efile); //заного создаем файл конечных мутаций
-            //var sw3 = new StreamWriter(ss); //создаем потоки записи в них
-            //var sw4 = new StreamWriter(se);
+            
             int i = 0;
             foreach (var val in sortedDict) //используем словарь
             {
@@ -155,18 +151,12 @@ namespace TestProject1
                 {
                     ratefw.WriteLine(val.Key + " " + val.Value);
                 }
-                // в файл рейтинга отправляем собственно мутации в рейтинге
-                //       string[] pair = val.Key.Split(new string[] { " " }, StringSplitOptions.None); //создаем массив - табличку куда отправляем наши мутации (уже без дубликатов)
-                //sw3.WriteLine(pair[0]); //записываем в файл начала и конца мутации уже без дубликатов
-                //sw4.WriteLine(pair[1]);
+               
                 i++;
             }
             ratefw.Close(); //все закрываем
             ratef.Close();
-            //sw3.Close();
-            //sw4.Close();
-            //ss.Close();
-            //se.Close();
+           
 
             File.Delete(text.pathv + "tempo"); //удаляем временный файл
             return i;

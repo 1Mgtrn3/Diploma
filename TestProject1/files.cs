@@ -13,8 +13,7 @@ namespace TestProject1
         public static void unitetemp(string tempname, string first, string second) //нужно для работы кнопки "мутировать рейтинг и словарь"
         {
             string namef = text.pathv + tempname;
-            //if (!File.Exists(namef))
-            //{
+            
             StreamWriter sw = new StreamWriter(File.Create(namef)); //создание временного файла
             using (var filer = new StreamReader(File.OpenRead(first))) //открытие файла с рейтингом паролей
             {
@@ -103,7 +102,7 @@ namespace TestProject1
 
                     using (var filer = new StreamReader(File.OpenRead(name))) // открываем на чтение файл который будем добавлять
                     {
-                        while (!filer.EndOfStream) //тупо построчно дописываем его вниз файла и все
+                        while (!filer.EndOfStream) //построчно дописываем его вниз файла и все
                         {
 
 

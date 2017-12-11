@@ -26,7 +26,7 @@ namespace TestProject1
 
 
         static public string pathv = "D:\\d1\\";
-     //   static public string mf = "mut1\\mf.txt";
+     
         static public string pratef = "D:\\d1\\rating.txt";
         static public string dicp = "dicp.txt";
 

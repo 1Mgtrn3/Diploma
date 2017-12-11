@@ -23,7 +23,7 @@ namespace TestProject1
             int i = 0;
             //       int k = 0;
 
-            List<string> filet = new List<string>(); //начало эксперимента по переносу файла в список
+            List<string> filet = new List<string>(); //начало переноса файла в список
             filet.AddRange(File.ReadAllLines(@filex)); //считываем файл в список
 
             for (int j = 0; j < filet.Count; j++) //здесь будем идти по списку
@@ -38,14 +38,14 @@ namespace TestProject1
                 {
                     List<string> start1 = new List<string>(); //список для начальных мутаций
                     List<string> end1 = new List<string>();
-                    //тут у нас есть набор из слов которые таки содержат. далее имет простая штука
+                    //тут у нас есть набор из слов которые таки содержат
 
                     for (int b = 0; b < matchvalues.Count - 1; b++) // иду по набору слов чтобы удалить оригинал
                     {
 
                         if (matchvalues[b] == filet[j]) //если оригинал, то удаляем из списка на расстрел
                         {
-                            i++;//тоже заглушка
+                            i++;
                             matchvalues.RemoveAt(b); //удаляю его
 
                         }
@@ -77,18 +77,13 @@ namespace TestProject1
                         File.AppendAllLines(text.pathv + text.rendf, end1);
                     }
                     
-                    //   matchvalues.
+                    
                 }
 
                 int perc = Convert.ToInt32(((float)(j + 1) / filet.Count) * 100);
-                //  float perc2 = ((float)(j + 1) / filet.Count) * 100;
+                
                 Debug.WriteLine(j + 1 + " / " + filet.Count);
-                //if (perc == 0)
-                //{
-                //    bw.ReportProgress(1, j + 1 + " / " + filet.Count);
-                //}
-                //else
-                //{
+               
                 if (perc <= 100)
                 {
                     bw.ReportProgress(perc, j + 1 + " / " + filet.Count);

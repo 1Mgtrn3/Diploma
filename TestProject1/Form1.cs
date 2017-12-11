@@ -36,7 +36,7 @@ namespace TestProject1
             var column1 = new DataGridViewColumn();
             column1.HeaderText = "Начало"; //текст в шапке
             column1.Width = 50; //ширина колонки
-            column1.ReadOnly = true; //значение в этой колонке нельзя править
+            column1.ReadOnly = true;     
             column1.Name = "start"; //текстовое имя колонки, его можно использовать вместо обращений по индексу
             column1.Frozen = true; //флаг, что данная колонка всегда отображается на своем месте
             column1.CellTemplate = new DataGridViewTextBoxCell(); //тип нашей колонки
@@ -145,7 +145,7 @@ namespace TestProject1
 
                     j++;
                 }
-             //   StreamWriter swd = new StreamWriter(File.Create(text.pathv + text.binrate));
+             
                 BinaryFormatter serializer = new BinaryFormatter();
                 var vtest = File.Create(text.pathv + text.binrate);
                 serializer.Serialize(vtest, try4);
@@ -189,7 +189,7 @@ namespace TestProject1
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //label4.Text = e.ProgressPercentage.ToString();
+            
             label4.Text = e.UserState.ToString();
 
 
@@ -208,7 +208,7 @@ namespace TestProject1
         }
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
-            //сохранение файла (не окончательный вариант конечно же)
+            
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -228,7 +228,7 @@ namespace TestProject1
                     int m = (int)numericUpDown1.Value;
                     //label4.Enabled = false;
                     text1.applymute(m, ratef, sender as BackgroundWorker, syncStream);
-                    // Code to write the stream goes here.
+                    
                     myStream.Close();
                 }
                 else
@@ -264,7 +264,7 @@ namespace TestProject1
                 button8.Enabled = true;
             }
 
-       //     MessageBox.Show("Processing ended successfully!");
+       
 
         }
 
@@ -319,7 +319,7 @@ namespace TestProject1
                 button1.Enabled = true;
                 button8.Enabled = true;
 
-                ///////сюдаааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа
+                
                 backgroundWorker1.RunWorkerAsync();
             }
             
@@ -445,7 +445,7 @@ namespace TestProject1
                     var text1 = new rating();
                     files.unitetemp("unittemp",text.pratef, text.pathv + text.dicp ); //соединяем файл рейтинга и файл словаря в один
                     text1.applymute((int)numericUpDown1.Value, text.pathv + "unittemp", sender as BackgroundWorker, myStream);
-                    // Code to write the stream goes here.
+                    .
                     myStream.Close();
                 }
                 else
